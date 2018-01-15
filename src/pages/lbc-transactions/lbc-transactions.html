@@ -1,0 +1,117 @@
+<ion-header>
+  <ion-navbar color="royal">
+      <ion-title> </ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title></ion-title>
+  </ion-navbar>
+  <ion-toolbar no-border-top>
+      <ion-segment [(ngModel)]="transactions">
+        <ion-segment-button value="transacted">
+          Transacted
+        </ion-segment-button>
+        <ion-segment-button value="pending">
+          Pending
+        </ion-segment-button>
+
+        <ion-segment-button value="new">
+            New Transaction
+          </ion-segment-button>
+
+      </ion-segment>
+    </ion-toolbar>
+  </ion-header>
+
+
+<ion-content>
+
+    <div [ngSwitch]="transactions">
+        <ion-list *ngSwitchCase="'transacted'">
+          <ion-item *ngFor="let item of transacts" >
+            <ion-thumbnail item-left>
+              <img class="round_edge" src="assets/nafco_logo.png">
+            </ion-thumbnail>
+            <h2>{{item.product}}</h2>
+            <p>{{item.quanity}} items</p>
+            <p>GHC {{item.total}}</p>
+          </ion-item>
+        </ion-list>
+      
+        <ion-list *ngSwitchCase="'pending'">
+          <ion-item *ngFor="let item of pendings" (click)="goto_options()" >
+            <ion-thumbnail item-start>
+              <img class="round_edge" src="assets/nafco_logo.png">
+            </ion-thumbnail>
+            <h2>{{item.product}}</h2>
+            <p>{{item.quantity}} items</p>
+            <p>GHC {{item.total}}</p>
+          </ion-item>
+       
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'new'">
+          
+          <form [formGroup]="transaction_form">
+              <ion-item>
+                  <ion-label> Region</ion-label>
+                  <ion-select (ionChange)="get_districts()" formControlName="region" [(ngModel)]="region">
+                      <ion-option [value]="item.ID" *ngFor="let item of region_list">{{item.Name}}</ion-option>
+                  </ion-select>
+                </ion-item>
+
+                <br>
+
+                <ion-item>
+                    <ion-label> District</ion-label>
+                    <ion-select formControlName="district"  [(ngModel)]="district">
+                    <ion-option [value]="item.ID"  *ngFor="let item of districts_list">{{item.Name}}</ion-option>
+                    </ion-select>
+                  </ion-item>
+
+                  <br>
+
+                  <ion-item>
+                    <ion-label>Product</ion-label>
+                    <ion-select formControlName="product" (ionChange)="get_product()" [(ngModel)]="product">
+                        <ion-option [value]="item.Category_ID" *ngFor="let item of products">{{item.Category_Name}}</ion-option>
+                    </ion-select>
+                 </ion-item>
+
+                
+                 
+      
+                <ion-item>
+                    <ion-label floating>Unit Price</ion-label>
+                    <ion-input (ionChange)="getInstantTotal()" type="number" formControlName="unit_price" [(ngModel)]="unit_price" ></ion-input>
+                  </ion-item>
+      
+                    <ion-item>
+                      <ion-label floating>Quantity</ion-label>
+                      <ion-input (ionChange)="getInstantTotal()" type="number" formControlName="quantity" [(ngModel)]="quantity" ></ion-input>
+                    </ion-item>
+                  
+                    <ion-item>
+                      <ion-label floating>Total Price</ion-label>
+                      <ion-input type="number" formControlName="total"  [(ngModel)]="total" ></ion-input>
+                    </ion-item>
+                  </form>
+                  
+                  <ion-input type="hidden" [(ngModel)]="get_product_name"></ion-input>
+
+                    <div align="center" padding>
+                      <button full large icon-left ion-button color="secondary" (click)="transaction()" [disabled]="!transaction_form.valid">
+                          <ion-icon name="arrow-dropright"></ion-icon>
+                        Submit
+                      </button>
+                      
+                    </div>
+
+                      
+           
+          </ion-list>
+
+ 
+
+      </div>
+      </ion-content>

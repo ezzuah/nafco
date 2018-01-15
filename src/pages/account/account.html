@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-navbar color="royal">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title></ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+<div class="user_bg">
+
+  <div align="center">
+    <br padding>
+      <img  src="assets/man.png" width="90" height="90">
+      <h3 style="color:white">{{fullname}}</h3>
+     
+  </div>
+  
+
+</div>
+  <ion-list>
+  <ion-list-header>
+    User Information
+  </ion-list-header>
+  <ion-item><ion-icon color="dark"  name="call" item-left></ion-icon>{{phone_number}}</ion-item>
+  <ion-item><ion-icon  color="dark" name="person" item-left></ion-icon>{{username}}</ion-item>
+  <ion-item *ngIf="user_role=='LBC'"><ion-icon  color="dark" name="home" item-left></ion-icon>{{company_name}}</ion-item>
+  <ion-item menuClose ><ion-icon  color="dark" name="briefcase" item-left></ion-icon>{{user_role}}</ion-item>
+  <ion-item *ngIf="user_role=='LBC'" menuClose ><ion-icon  color="dark" name="list-box" item-left></ion-icon>Stock Limit : {{stock_limit}} Tons </ion-item>
+  <ion-item *ngIf="user_role=='Seed Distributor'"  (click)="goto_routes_list()" menuClose ><ion-icon color="dark"  name="locate" item-left></ion-icon><strong>{{route_total}}</strong> Routes</ion-item>
+  <ion-item *ngIf="user_role=='Seed Distributor'" ><ion-icon color="dark"  name="people" item-left></ion-icon>My Farms</ion-item>
+  <ion-item (click)="goto_password_change()" *ngIf="password_change=='Pending'" ><ion-icon color="danger"  name="lock" item-left></ion-icon>You are required to change your Password</ion-item>
+</ion-list>
+<button *ngIf="user_role=='Seed Distributor'" ion-button (click)="sync_data()" full large outline><ion-icon icon-left name="sync"> Sync Routes</ion-icon></button>
+
+  </ion-content>
+  

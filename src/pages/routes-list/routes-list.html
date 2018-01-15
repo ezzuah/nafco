@@ -1,0 +1,26 @@
+<ion-header>
+        <ion-navbar color="royal">
+            <ion-title> </ion-title>
+          <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+          <ion-title></ion-title>
+        </ion-navbar>
+        </ion-header>
+      
+      
+      <ion-content>
+        
+        <ion-list>
+            <ion-item text-wrap *ngFor="let item of routes_list" (click)="goto_routes($event,item)" >
+                <ion-icon color="primary" name="locate" item-left large ></ion-icon>
+                <h2>{{item.route}}</h2>
+                <p>{{item.route_total}} Farms</p>
+              <div align="right">
+              </div>
+              </ion-item>
+        </ion-list>
+    
+          
+     </ion-content>
+      

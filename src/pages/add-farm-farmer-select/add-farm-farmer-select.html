@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-navbar color="royal">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title></ion-title>
+    </ion-navbar>
+    <ion-toolbar no-border-top>
+            <ion-searchbar animated [showCancelButton]="shouldShowCancel"  (ionCancel)="onCancel($event)" (ionInput)="getItems($event)"></ion-searchbar>
+          </ion-toolbar>
+  </ion-header>
+  
+ 
+
+        <ion-content>
+                
+                <ion-list>
+                    <ion-item text-wrap *ngFor="let item of farmers" (click)="goto_add_farmer($event,item)">
+                            <ion-thumbnail item-left>
+                                    <img class="round_edge" src="http://51.140.49.106/bufferstock/farmer_photos/{{item.Picture}}">
+                          </ion-thumbnail>
+                        <h2>{{item.Firstname}} {{item.Middlename}} {{item.Lastname}}</h2>
+                        <p>{{item.Contact}}</p>
+                      </ion-item>
+                </ion-list>
+            
+                  
+             </ion-content>
+
+  

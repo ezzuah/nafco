@@ -1,0 +1,79 @@
+<ion-header>
+    <ion-navbar color="royal">
+        <ion-title> </ion-title>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title></ion-title>
+    </ion-navbar>
+    <ion-toolbar no-border-top>
+        <ion-segment [(ngModel)]="transactions">
+          <ion-segment-button value="transacted">
+            Transacted
+          </ion-segment-button>
+          <ion-segment-button value="pending">
+            Pending
+          </ion-segment-button>
+
+          <ion-segment-button value="new">
+              New Transaction
+            </ion-segment-button>
+
+        </ion-segment>
+      </ion-toolbar>
+    </ion-header>
+  
+  
+  <ion-content>
+      <div [ngSwitch]="transactions">
+          <ion-list *ngSwitchCase="'transacted'">
+            <ion-item *ngFor="let item of transacts" >
+              <ion-thumbnail item-left>
+                  <img *ngIf="item.reciever!='NAFCO'" class="round_edge" src="http://51.140.49.106/bufferstock/farmer_photos/{{item.pic}}">
+                  <img *ngIf="item.reciever=='NAFCO'" class="round_edge" src="assets/nafco_logo.png">
+              </ion-thumbnail>
+              <h2>{{item.reciever}}</h2>
+              <p>{{item.product}}</p>
+              <p>{{item.farm_name}}</p>
+              <p>GHC {{item.total}}</p>
+              <p>{{item.total_weight}} </p>
+            </ion-item>
+          </ion-list>
+        
+          <ion-list *ngSwitchCase="'pending'">
+            <ion-item *ngFor="let item of pendings" (click)="goto_options($event,item)" >
+              <ion-thumbnail item-start>
+                <img *ngIf="item.reciever!='NAFCO'" class="round_edge" src="http://51.140.49.106/bufferstock/farmer_photos/{{item.pic}}">
+                <img *ngIf="item.reciever=='NAFCO'" class="round_edge" src="assets/nafco_logo.png">
+              </ion-thumbnail>
+              <h2>{{item.reciever}}</h2>
+              <p>{{item.product}}</p>
+              <p>{{item.farm_name}}</p>
+              <p>GHC {{item.total}}</p>
+              <p>{{item.total_weight}} </p>
+            </ion-item>
+         
+          </ion-list>
+
+          <ion-list *ngSwitchCase="'new'">
+            <div *ngIf="user_type=='LBC'" >
+              <ion-item *ngFor="let item of lbc_sell_type" (click)="goto_new_transaction($event,item)">
+                  <ion-thumbnail item-start>
+                    <img class="round_edge" src="assets/nafco_logo.png">
+                  </ion-thumbnail>
+                  <h2>{{item.farmer_name}}</h2>
+                </ion-item>
+              </div>
+
+              <ion-item *ngFor="let item of farmers" (click)="goto_new_transaction($event,item)" >
+                <ion-thumbnail item-start>
+                  <img class="round_edge" src="http://51.140.49.106/bufferstock/farmer_photos/{{item.pic}}">
+                </ion-thumbnail>
+                <h2>{{item.farmer_name}}</h2>
+                <p>{{item.farm_name}}</p>
+                <p>{{item.farm_address}}</p>
+              </ion-item>
+            </ion-list>
+
+        </div>
+        </ion-content>

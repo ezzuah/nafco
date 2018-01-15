@@ -1,0 +1,28 @@
+<ion-header>
+        <ion-navbar color="royal">
+          <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+          <ion-title>Settings</ion-title>
+        </ion-navbar>
+      </ion-header>
+
+<ion-content>
+    <ion-list>
+    <ion-item text-wrap (click)="goto_add_farmer()">
+            <ion-thumbnail item-left>
+                <img src="assets/change_pass.png">
+            </ion-thumbnail>
+            <h2>Change Password</h2>
+            <p>Change your current password</p>
+            </ion-item>
+
+            <ion-item text-wrap (click)="logout()">
+                    <ion-thumbnail item-left>
+                        <img src="assets/logout.png">
+                    </ion-thumbnail>
+                    <h2>LogOut</h2>
+                    <p>LogOut from NAFCO App</p>
+                    </ion-item>
+    </ion-list>
+</ion-content>

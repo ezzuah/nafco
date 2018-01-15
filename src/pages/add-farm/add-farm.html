@@ -1,0 +1,65 @@
+<ion-header>
+    <ion-navbar color="royal">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title></ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+
+      <form [formGroup]="regis_form">
+      <ion-list>
+
+                <ion-item>
+                  <ion-label floating>Farm Name</ion-label>
+                  <ion-input type="text" formControlName="farm_name" [(ngModel)]="farm_name" ></ion-input>
+                </ion-item>
+              
+                <ion-item>
+                  <ion-label floating>Farm Size</ion-label>
+                  <ion-input type="text" formControlName="farm_size" [(ngModel)]="farm_size" ></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label floating>Town</ion-label>
+                  <ion-input type="text" formControlName="farm_town" [(ngModel)]="farm_town"  ></ion-input>
+                </ion-item>
+                  <br>
+                <ion-item>
+                    <ion-label>Region</ion-label>
+                    <ion-select (ionChange)="get_districts()" [(ngModel)]="farm_region" formControlName="farm_region" >
+                        <ion-option [value]="item.ID" *ngFor="let item of region_list">{{item.Name}}</ion-option>
+                    </ion-select>
+                  </ion-item>
+
+                  <br>
+
+                  <ion-item>
+                      <ion-label>District</ion-label>
+                      <ion-select formControlName="farm_district" [(ngModel)]="farm_district">
+                      <ion-option [value]="item.ID"  *ngFor="let item of districts_list">{{item.Name}}</ion-option>
+
+                      </ion-select>
+                    </ion-item>
+           
+              
+              </ion-list>
+
+ 
+
+          <div align="center" *ngFor="let photo of photos; let id = index" >
+              <img style="width:50%" [src]="photo" *ngIf="photo" />
+           </div>
+    
+              <div align="center">
+                  <button icon-left ion-button full outline color="primary" (click)="register()" large [disabled]="!regis_form.valid">
+                      <ion-icon name="contact"></ion-icon>
+                    Register Farm
+                  </button>
+                </div>
+              </form>
+      
+  </ion-content>
+  

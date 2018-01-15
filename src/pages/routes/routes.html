@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-navbar color="royal">
+        <ion-title> </ion-title>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title></ion-title>
+    </ion-navbar>
+    <ion-toolbar no-border-top>
+        <ion-searchbar placeholder="Filter Items with Cancel" showCancelButton color="danger" (ionInput)="filterItems($event)"></ion-searchbar>
+      </ion-toolbar>
+    </ion-header>
+  
+  
+  <ion-content  padding>
+    
+    <ion-list>
+        <ion-item text-wrap *ngFor="let item of items">
+            <ion-icon color="primary" name="locate" item-left large ></ion-icon>
+            <h2>{{item.farm_name}}</h2>
+            <p>{{item.farm_address}}</p>
+          <div align="right">
+            <button ion-button icon-left clear (click)="getdirections($event,item)">
+              <ion-icon name="navigate"></ion-icon>
+              Get Directions
+            </button>
+          </div>
+          </ion-item>
+    </ion-list>
+
+      
+ </ion-content>
+  

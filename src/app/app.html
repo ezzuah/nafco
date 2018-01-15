@@ -1,16 +1,49 @@
-<ion-menu [content]="content">
-  <ion-header>
+<ion-menu [content]="content" >
+  <ion-header no-border >
+    <ion-navbar color="royal">
     <ion-toolbar>
-      <ion-title>Menu</ion-title>
+      <ion-title>NAFCO</ion-title>
     </ion-toolbar>
+    </ion-navbar>
   </ion-header>
 
   <ion-content>
-    <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
-    </ion-list>
+      <ion-list>
+          <ion-list-header>
+           Menu
+          </ion-list-header>
+
+          <ion-item color="lighter" *ngIf="global.menu_status"  menuClose (click)="goto_my_account()"> 
+            <ion-icon color="dark" name="contact" item-left></ion-icon>Account
+          </ion-item>
+
+          <ion-item color="lighter" *ngIf="global.menu_status && global.user=='LBC' "  menuClose (click)="goto_stocks()"> 
+            <ion-icon color="dark" name="paper" item-left></ion-icon>My Stocks
+          </ion-item>
+
+          <ion-item color="lighter" *ngIf="global.user=='Seed Distributor' && global.menu_status" menuClose (click)="goto_add_farmer_select()"> 
+            <ion-icon color="dark" name="contact" item-left></ion-icon>Add Farmer
+          </ion-item>
+
+          <ion-item color="lighter" *ngIf="global.user=='Seed Distributor' && global.menu_status"  menuClose (click)="goto_my_routes()">
+            <ion-icon color="dark"  name="navigate" item-left></ion-icon>My Routes
+          </ion-item>
+          
+          <ion-item color="lighter" *ngIf="global.menu_status"  menuClose (click)="goto_transactions()">
+            <ion-icon  color="dark" name="cash" item-left></ion-icon>
+            Transactions
+          </ion-item>
+
+
+          <ion-item color="lighter" *ngIf="global.menu_status" menuClose (click)="goto_settings()">
+            <ion-icon color="dark"  name="cog" item-left></ion-icon>Settings
+          </ion-item>
+
+          <ion-item color="lighter"  menuClose (click)="goto_about_nafco()">
+            <ion-icon color="dark"  name="information-circle" item-left></ion-icon>About NAFCO
+          </ion-item>
+
+        </ion-list>
   </ion-content>
 
 </ion-menu>

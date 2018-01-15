@@ -1,0 +1,74 @@
+
+
+    <ion-header>
+      <ion-navbar color="royal">
+          <ion-title> <ion-icon name="home"></ion-icon> HOME</ion-title>
+        <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title></ion-title>
+      </ion-navbar>
+    </ion-header>
+    
+    
+    <ion-content>
+    
+        <ion-card>
+            
+              <ion-item>
+                <ion-avatar item-start>
+                  <img src="assets/user.png" width="80">
+                </ion-avatar>
+                <h2>Benjamin Blay</h2>
+                <p>ezzuahlives</p>
+              </ion-item>
+            </ion-card>
+    
+            <ion-card>
+                <div #map id="map" style="width:100%; height:400px;"></div>
+                <hr>
+                  <ion-item text-wrap *ngFor="let item of usermap | slice:0:3">
+                    <ion-icon color="primary" name="locate" item-left large ></ion-icon>
+                    <h2>{{item.title}}</h2>
+                    <p>14 S. Hop Avenue, Madison, WI 53703</p>
+                    <div align="right">
+                    <button (click)="get_directions($event,item)" ion-button icon-left clear item-end>
+                      <ion-icon name="navigate"></ion-icon>
+                      Get Directions
+                    </button>
+                    </div>
+                  
+                  </ion-item>
+
+                  <button (click)="goto_all_routes()" ion-button full icon-left color="secondary" large><ion-icon name="locate"></ion-icon> View all Routes</button>
+
+                  <br>
+                
+                </ion-card>
+
+                <ion-card>
+                    <ion-card-header>
+                      <strong><span class="blue_color">Explore</span></strong>
+                    </ion-card-header>
+                  
+                    <ion-list>
+                      <button ion-item (click)="goto_transactions()">
+                        <ion-icon name="card" item-start></ion-icon>
+                        My Transactions
+                      </button>
+                  
+                      <button ion-item>
+                        <ion-icon name="people" item-start></ion-icon>
+                        My Farmers
+                      </button>
+                  
+                      <button ion-item>
+                        <ion-icon name="cafe" item-start></ion-icon>
+                        Others
+                      </button>
+
+                    </ion-list>
+                  </ion-card>
+    
+    </ion-content>
+    

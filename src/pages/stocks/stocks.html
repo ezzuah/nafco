@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar color="royal">
+      <ion-title> </ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title></ion-title>
+  </ion-navbar>
+  </ion-header>
+
+
+<ion-content>
+  
+  <ion-list>
+      <ion-item text-wrap *ngFor="let item of stocks">
+          <ion-icon color="primary" name="list-box" item-left large ></ion-icon>
+          <h2>{{item.Product_Name}}</h2>
+          <p>{{item.Quantity}} Bags Remaining</p>
+        <div align="right">
+        </div>
+        </ion-item>
+  </ion-list>
+
+    
+</ion-content>

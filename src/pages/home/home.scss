@@ -1,3 +1,20 @@
-page-home {
+.position {
+    position: relative;
+    top:10%;
+}
+.white_text {
+    color: #fff;
+}
 
+.bgimg{
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+	background-image: url(../assets/cover2.jpg);
+	background-attachment: scroll;
+	
+}
+
+.radius {
+	border-radius: 7px;
 }
